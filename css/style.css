@@ -1,3 +1,4 @@
+/* ===== GERAL ===== */
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -6,9 +7,27 @@
 html,
 body {
     font-family: 'Roboto', sans-serif;
+    color: #546E7A;
 }
-
-/* ===== GERAL ===== */
+button {
+    transition: background-color 0.5s;
+}
+.btn-cta {
+    background-color: #2196F3;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    padding: 0 40px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 3.2;
+}
+.btn-cta:focus, .btn-cta:hover {
+    background-color: #42A5F5;
+    color: #FFFFFF;
+}
+.btn-cta i {
+    margin-right: 16px;
+}
 .secondary-button {
     background: none;
     border: 1px solid #FFFFFF;
@@ -17,10 +36,49 @@ body {
     color: #FFFFFF;
     font-size: 16px;
 }
+.nav>li>a {
+    transition: background-color 0.5s;
+}
 .secondary-button i {
-    padding: 0 4px;
+    padding: 0 8px;
+}
+h1 {
+    color: #FFFFFF;
+}
+h5 {
+    font-size: 18px;
+    color: #546E7A;
+    font-weight: 500;
+}
+p {
+    color: #78909C;
+    font-size: 14px;
+}
+.container {
+    max-width: 1600px;
+}
+a {
+    display: inline-block
+}
+.internal-section {
+    padding: 64px 0;
+}
+.internal-section h1 {
+    text-align: center;
+    color: #546E7A;
+    font-size: 30px;
+    font-weight: 400;
+}
+.smile {
+    width: 100%;
+    text-align: center;
+}
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    padding-left: 8px;
+    padding-right: 8px;
 }
 /* ===== /GERAL ===== */
+
 
 /* ===== MENU ===== */
 .navbar-calendrier {
@@ -49,12 +107,13 @@ body {
 }
 /* ===== /MENU ===== */
 
+
 /* ===== HOME ===== */
+/* ... Destaque ... */
 .header-home {
     background: linear-gradient(141deg, #00695C 18.96%, #00897B 75.05%);
     backface-visibility: hidden;
-    /* height: auto; */
-    min-height: 400px;
+    height: auto;
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -66,7 +125,79 @@ body {
     height: 30%;
     position: absolute;
     width: 100%;
+    pointer-events: none;
+    z-index: 0;
 }
+#home-banner h1 {
+    margin-top: 32px;
+}
+#home-banner h4 {
+    color: #FFFFFF;
+    font-weight: 400;
+    opacity: 0.5;
+}
+#home-banner .stores,
+#home-banner .cta-container {
+    margin-top: 48px;
+}
+#home-banner .cta-container a,
+#home-banner .cta-container button {
+    width: 100%;
+}
+#home-banner .secondary-button {
+    font-size: 18px;
+    /* margin-left: 16px; */
+    padding: 0 40px;
+    line-height: 3.2;
+}
+.video-home img {
+    cursor: pointer;
+    margin: 0 auto;
+    margin-bottom: 16px;
+}
+/* ... /Destaque ... */
+
+/* ... Funcões ... */
+#home-functions {
+    background-color: #fafafa;
+}
+.function-cards {
+    max-width: 1200px;
+    margin: 16px auto;
+}
+.card-f {
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.15);
+    padding: 16px;
+    background-color: #FFFFFF;
+    background-repeat: no-repeat;
+    background-position-x: -16px;
+    background-position-y: -16px;
+    position: relative;
+    height: 250px;
+    margin-top: 16px;
+}
+.card-f i {
+    font-size: 32px;
+    color: #009688;
+}
+.card-f h5 {
+    margin-top: 56px;
+    margin-bottom: 16px;
+}
+.btn-saibamais {
+    background-color: #FFFFFF;
+    color: #009688;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    position: absolute;
+    bottom: 16px;
+}
+.btn-saibamais:hover, .btn-saibamais:focus {
+    background-color: #f0f0f0;
+    color: #00897B;
+}
+/* ... /Funcões ... */
 /* ===== /HOME ===== */
 
 /* ===== FOOTER ===== */
@@ -89,3 +220,31 @@ footer .link-policy a:hover {
     text-decoration: none;
 }
 /* ===== /FOOTER ===== */
+
+
+@media (min-width: 1650px) {
+    .container {
+        width: 1600px;
+    }
+}
+@media (max-width: 768px) {
+    .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    #home-banner {
+        padding-bottom: 80px;
+    }
+    #home-banner .stores,
+    #home-banner .cta-container {
+        margin-top: 16px;
+    }
+    .internal-section {
+        padding: 24px 0;
+    }
+    .card-f,
+    .btn-saibamais {
+        position: unset;
+        height: unset;
+    }
+}
