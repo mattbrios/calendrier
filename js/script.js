@@ -1,37 +1,48 @@
+//Carregamento da classe pra animações
 AOS.init({
     duration: 1200,
 });
 
 $(function () {
+    //Carregamento dos arquivos de menu e footer
     $('#menu').load('menu.html', menuLoad);
     $('#footer').load('footer.html', footerLoad);
 
+    //Direcionamento botão Saiba Mais dos boxes de Funcionalidades na home
     $('.btn-saibamais').click(function() {
         window.location.href = "funcionalidades.html"
     });
-
-    $('.btn-scroll').click( function(e) {
-        e.preventDefault();
-        scrollTo($(this).attr('destiny'));
-    });
     
+    //Click na TV destaque pra exibir o vídeo do YouTube em modal
     $('.btn-video').click(function() {
         $('.embed-responsive-item').attr('src', "https://www.youtube.com/embed/ZcxrV1m36IY?autoplay=1");
         $('#video-modal').modal('toggle');
     });
 
+    //Funcão de "matar" o vídeo quando fecha a modal
     $('#video-modal').on('hide.bs.modal', function(e) {
         $('.embed-responsive-item').each(function(){
             $('.embed-responsive-item').attr('src', "");
         });
     });
+
+    //Scroll dos botões de categoria da view de Funcionalidades
+    $('.btn-scroll').click( function(e) {
+        e.preventDefault();
+        scrollTo($(this).attr('destiny'));
+    });
+
+    //Efeito onda do destaque no Firefox
     if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
         $('.header-home').addClass('header-firefox')
     }
+
+    //Delay de animação pra exibição do formulário em testar-agora
     setTimeout(function() {
         $('.vcenter').fadeIn();
     }, 300);
 
+    //Validação e submit do Passo 01 do formulário
     $('.btn-form').click(function() {
         $('.error-msg').remove();
         var validateStep1 = [validateMail(), validatePass()];
@@ -40,16 +51,20 @@ $(function () {
                 $('.step2').fadeIn(function() {
                     $('#inputName').focus();
                 });
+                //Add botão de submit do form
                 $('.submit-container').append('<button type="submit" class="btn btn-cta form-submit"><i class="fas fa-rocket"></i>Testar agora</button>');
             });
         }
     });
+
+    //Função que simula o type=submit no Passo 1, pressionando Enter pra realizar a validação
     $('.step1').on('keypress',function(e) {
         if(e.which == 13) {
             $('.btn-form').trigger("click");
         }
     });
 
+    //Função de submit do formulário
     $('form').submit(function(e) {
         e.preventDefault();
         $('.error-msg').remove();
@@ -61,12 +76,14 @@ $(function () {
     })
 });
 
+//Função de scroll animado
 function scrollTo(destiny) {
     $('html, body').animate({
         scrollTop: $('#' + destiny).offset().top
     }, 'slow');
 }
 
+//Função após o carregamento dinâmico do arquivo menu.html
 function menuLoad() {
     $('.menu-phone').attr('href', whatsappButton);
 
@@ -75,17 +92,20 @@ function menuLoad() {
     })
 }
 
+//Função após o carregmento dinâmico do arquivo footer.html
 function footerLoad() {
     $('.whatsapp-btn').hide();
     $('.whatsapp-btn').click(function(e) {
         window.open(whatsappButton());
     });
 
+    //Animação de entrada do botão flutuante de WhatsApp
     setTimeout(function() {
         $('.whatsapp-btn').fadeIn();
     }, 5000);
 }
 
+//Validação de e-mail
 function validateMail() {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     if ( regex.test($('#mailInput').val()) ) {
@@ -96,10 +116,13 @@ function validateMail() {
         return false
     }
 }
+
+//Validação de senha
 function validatePass() {
     var pass = $('#passInput').val();
+    var minimoCaracteres = 6;
 
-    if( pass.length < 6 || pass == undefined ) {
+    if( pass.length < minimoCaracteres || pass == undefined ) {
         addError ($('#passInput'), "Sua senha deve conter pelo menos 6 caracteres")
         return false;
     } else {
@@ -107,9 +130,13 @@ function validatePass() {
         return true;
     }
 }
+
+//Validação de nome
 function validateName() {
     var name = $('#inputName').val();
-    if( name.length < 3 || name == undefined ) {
+    var minNameLength = 3;
+
+    if ( name.length < minNameLength || name == undefined ) {
         addError( $('#inputName'), "Nome inválido" );
         return false;
     } else {
@@ -117,6 +144,8 @@ function validateName() {
         return true;
     }
 }
+
+//Validação de telefone
 function validatePhone() {
     var inputPhone = $('#inputPhone').val();
     if( inputPhone.length < 14 ) {
@@ -127,9 +156,12 @@ function validatePhone() {
         return true;
     }
 }
+
+//Validação do combo de ramo de atividade
 function validateActivity() {
     var activitySelected = $('#inputActivity option:selected');
-    if(activitySelected.val() < 1) {
+
+    if ( activitySelected.val() < 1 ) {
         addError( $('#inputActivity'), "Selecione um ramo de ativididade");
         return false;
     } else {
@@ -137,9 +169,12 @@ function validateActivity() {
         return true;
     }
 }
+
+//Validação do combo de escolha de planos
 function validatePlan() {
     var planSelected = $('#inputPlan option:selected');
-    if(planSelected.val() < 1) {
+
+    if ( planSelected.val() < 1 ) {
         addError( $('#inputPlan'), "Selecione um plano. Os 7 primeiros dias são grátis!");
         return false;
     } else {
@@ -147,12 +182,15 @@ function validatePlan() {
         return true;
     }
 }
+
+//Função de adicionar o estulo e mensagem de erro no campo de formulário
 function addError(e, message) {
     $(e).addClass("error");
     $(e).focus();
     $('<p class="error-msg">' + message + "<p>").insertAfter(e);
 }
 
+//Validação do dispositivo pra encaminhar a URL do Whatsapp
 function whatsappButton() {
     let textoShare = "Olá! Gostaria de mais informações sobre o Calendrier. Poderia me ajudar?";
     let wppURL = "";
