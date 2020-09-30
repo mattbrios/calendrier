@@ -15,7 +15,7 @@ $(function () {
     
     //Click na TV destaque pra exibir o vídeo do YouTube em modal
     $('.btn-video').click(function() {
-        $('.embed-responsive-item').attr('src', "https://www.youtube.com/embed/H2um7agAqQQ?autoplay=1");
+        $('.embed-responsive-item').attr('src', "https://www.youtube.com/embed/fjQoSMHGd7Y?autoplay=1");
         $('#video-modal').modal('toggle');
     });
 
