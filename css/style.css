@@ -477,7 +477,7 @@ p {
     padding: 24px 0;
     border-radius: 10px;
     text-align: center;
-    min-height: 500px;
+    min-height: 515px;
     padding-bottom: 82px;
     position: relative;
     background-color: #FFFFFF;
@@ -786,5 +786,16 @@ footer .link-policy a:hover {
       vertical-align: middle;
       content: " ";
       height: 100%;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    #home-banner h1 {
+        font-size: 24px;
+        line-height: 1.3;
+        margin: 0;
+    }
+    #home-banner h4 {
+        margin-bottom: unset;
     }
 }
