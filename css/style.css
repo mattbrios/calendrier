@@ -576,6 +576,7 @@ p {
     background-color: #FAFAFA;
     padding: 32px;
     max-width: 550px;
+    margin: 0 auto;
 }
 .form-container h5{
     text-align: center;
